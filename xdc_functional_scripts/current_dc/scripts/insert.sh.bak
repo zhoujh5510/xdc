@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+echo "insert into trafodion.seabase.XDC1 values(1,'llll',123.4);" > ./insert.sql
+for((i=2;i<=100;i++));
+do
+echo "insert into trafodion.seabase.XDC1 values(${i},'llll',123.4);" >> ./insert.sql
+done
+
