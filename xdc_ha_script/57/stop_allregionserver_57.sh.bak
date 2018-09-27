@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#stop all region server Passive DC 57
+echo ">>>>>>>>stop region server of passive DC 57"
+su - root <<EOF
+linux
+sleep 2
+su -l hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
+EOF
+echo "stop region server of passive DC 57 successfully "
+
+echo ">>>>>>>>stop region server of passive DC 58"
+su - root <<EOF
+linux
+sleep 2
+ssh -T 10.10.23.58
+su -l hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
+exit
+EOF
+echo "stop region server of passive DC 58 successfully "
+
+echo ">>>>>>>>stop region server of passive DC 59"
+su - root <<EOF
+linux
+sleep 2
+ssh -T 10.10.23.59
+su -l hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
+exit
+EOF
+echo "stop region server of passive DC 59 successfully "
+

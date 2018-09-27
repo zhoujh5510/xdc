@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#start all region server of passive DC 57
+echo ">>>>>>>>start regionserver of passive DC 57 now !!!!!"
+su - root <<EOF
+linux
+sleep 2
+su -l hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"
+EOF
+echo "start regionserver of passive DC 57 successfully !!!!!"
+
+echo ">>>>>>>>start regionserver of passive DC 58 now !!!!!"
+su - root <<EOF
+linux
+sleep 2
+ssh -T 10.10.23.58
+su -l hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"
+exit
+EOF
+echo "start regionserver of passive DC 58 successfully !!!!!"
+
+echo ">>>>>>>>start regionserver of passive DC 59 now !!!!!"
+su - root <<EOF
+linux
+sleep 2
+ssh -T 10.10.23.59
+su -l hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"
+exit
+EOF
+echo "start regionserver of passive DC 59 successfully !!!!!"
+echo "start region server of passive DC 57 successfully"
